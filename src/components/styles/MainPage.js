@@ -1,8 +1,10 @@
 import styled from "styled-components";
-// import React, { useRef } from "react";
+import React, { useRef } from "react";
+import { connect } from "react-redux";
+import actions from "../../duck/actions";
 import img from "../../img/beer3.jpg";
 
-const MainPageWrapper = styled.div`
+const PageWrapper = styled.div`
   text-align: center;
   height: 100vh;
   position: relative;
@@ -10,7 +12,7 @@ const MainPageWrapper = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex;
+  display: ${(props) => (props.addBeerPage ? "none" : "flex")};
   align-items: flex-end;
   justify-content: center;
 `;
@@ -42,20 +44,27 @@ const Button = styled.button`
     box-shadow: 0 0 10px 0 #d42919 inset, 0 0 10px 4px #d42919;
   }
 `;
-// const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetHeight);
 
-// const MainPage = () => {
-//   const myRef = useRef(null);
-//   const executeScroll = () => scrollToRef(myRef);
-//   return (
-//     <Wrapper ref={myRef}>
-//       <Title>Piwa wypite i ocenione</Title>
-//       <Button onClick={executeScroll}>Zobacz piwa</Button>
-//       <Button>Logowanie</Button>
-//     </Wrapper>
-//   );
-// };
+const MainPageWrapper = ({ logInPageVisible, addBeerPage }) => {
+  const myRef = useRef(null);
+  const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetHeight);
+  const executeScroll = () => scrollToRef(myRef);
 
-// export default MainPage;
+  return (
+    <PageWrapper ref={myRef} addBeerPage={addBeerPage}>
+      <Title>Piwa wypite i ocenione</Title>
+      <Button onClick={executeScroll}>Zobacz piwa</Button>
+      <Button onClick={logInPageVisible}>Logowanie</Button>
+    </PageWrapper>
+  );
+};
 
-export { MainPageWrapper, Title, Button };
+const mapStateToProps = (state) => {
+  return { logInVisible: state.logInVisible, addBeerPage: state.addBeerPage };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  logInPageVisible: () => dispatch(actions.logInPageVisible()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPageWrapper);

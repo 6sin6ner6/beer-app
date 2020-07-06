@@ -10,16 +10,11 @@ import { GlobalStyle } from "./components/styles/GlobalStyle";
 const App = (props) => {
   return (
     <>
-      {props.addBeerPage ? (
-        <AddBeerPage />
-      ) : (
-        <>
-          <MainPage />
-          {props.logInVisible ? <LogInPage /> : null}
-          <SearchBar />
-          <BeerList />
-        </>
-      )}
+      <AddBeerPage />
+      <MainPage />
+      {props.logInVisible ? <LogInPage /> : null}
+      <SearchBar />
+      <BeerList />
       <GlobalStyle />
     </>
   );

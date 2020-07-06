@@ -1,9 +1,9 @@
 import types from "./types";
 
-const logInVisible = () => ({
+const logInPageVisible = () => ({
   type: types.LOGIN_VISIBLE,
 });
-const logInInvisible = () => ({
+const logInPageInvisible = () => ({
   type: types.LOGIN_INVISIBLE,
 });
 
@@ -36,8 +36,8 @@ const displaySearched = (searchValue) => ({
 });
 
 export default {
-  logInVisible,
-  logInInvisible,
+  logInPageVisible,
+  logInPageInvisible,
   addBeers,
   sortBeers,
   getSortType,

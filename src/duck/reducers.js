@@ -25,6 +25,7 @@ const beersReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         addBeerPage: true,
+        logInVisible: false,
       };
     case types.GET_SORT_TYPE:
       return {

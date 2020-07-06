@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { connect } from "react-redux";
+import React from "react";
 
 const SearchBarWrapper = styled.div`
-  display: flex;
+  display: ${(props) => (props.addBeerPage ? "none" : "flex")};
   justify-content: space-around;
   align-items: center;
   height: 160px;
@@ -9,4 +11,12 @@ const SearchBarWrapper = styled.div`
   margin: 50px auto;
 `;
 
-export default SearchBarWrapper;
+const SearchBar = ({ addBeerPage }) => {
+  return <SearchBarWrapper addBeerPage={addBeerPage} />;
+};
+
+const mapStateToProps = (state) => ({
+  addBeerPage: state.addBeerPage,
+});
+
+export default connect(mapStateToProps, null)(SearchBar);

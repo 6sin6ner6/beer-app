@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React from "react";
+import { connect } from "react-redux";
 import rating from "../../img/rating-stars.png";
 import Input from "./Input";
 import LogInButton from "./LogInButton";
@@ -12,7 +13,7 @@ const AddBeerWrapper = styled.form`
   background-size: cover;
   height: 100vh;
   width: 100%;
-  display: flex;
+  display: ${(props) => (props.addBeerPage ? "flex" : "none")};
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -59,9 +60,9 @@ const Submit = styled(LogInButton)`
   margin-left: 900px;
 `;
 
-const AddBeerForm = ({ name, type, description }) => (
+const AddBeerForm = ({ addBeerPage }) => (
   <>
-    <AddBeerWrapper>
+    <AddBeerWrapper addBeerPage={addBeerPage}>
       <div>
         <Input name="beerName" placeholder="Nazwa piwa..." />
         <Input name="beerType" placeholder="Gatunek piwa..." />
@@ -85,4 +86,8 @@ const AddBeerForm = ({ name, type, description }) => (
   </>
 );
 
-export default AddBeerForm;
+const mapStateToProps = (state) => {
+  return { addBeerPage: state.addBeerPage };
+};
+
+export default connect(mapStateToProps)(AddBeerForm);
