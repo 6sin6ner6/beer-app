@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { connect } from "react-redux";
 import React from "react";
+import Search from "../../components/styles/Search";
+import Sort from "../../components/styles/Sort";
 
 const SearchBarWrapper = styled.div`
   display: ${(props) => (props.addBeerPage ? "none" : "flex")};
@@ -12,7 +14,12 @@ const SearchBarWrapper = styled.div`
 `;
 
 const SearchBar = ({ addBeerPage }) => {
-  return <SearchBarWrapper addBeerPage={addBeerPage} />;
+  return (
+    <SearchBarWrapper addBeerPage={addBeerPage}>
+      <Search />
+      <Sort />
+    </SearchBarWrapper>
+  );
 };
 
 const mapStateToProps = (state) => ({
