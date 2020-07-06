@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { connect } from "react-redux";
+import SearchBar from "./pages/SearchBar";
+import BeerList from "./pages/BeerList";
+import MainPage from "./pages/MainPage";
+import LogInPage from "./pages/LogInPage";
+import { GlobalStyle } from "./components/styles/GlobalStyle";
 
-function App() {
+const App = (props) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MainPage />
+      {props.visible ? <LogInPage /> : null}
+      <SearchBar />
+      <BeerList />
+      <GlobalStyle />
+    </>
   );
-}
+};
 
-export default App;
+const mapStateToProps = (state) => {
+  return { visible: state.visible };
+};
+
+export default connect(mapStateToProps)(App);
