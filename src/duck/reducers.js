@@ -1,7 +1,8 @@
 import types from "./types";
 
 const INITIAL_STATE = {
-  visible: false,
+  logInVisible: false,
+  addBeerPage: false,
   beers: [],
   filteredBeers: [],
   sortType: "",
@@ -13,12 +14,17 @@ const beersReducer = (state = INITIAL_STATE, action) => {
     case types.LOGIN_VISIBLE:
       return {
         ...state,
-        visible: true,
+        logInVisible: true,
       };
     case types.LOGIN_INVISIBLE:
       return {
         ...state,
-        visible: false,
+        logInVisible: false,
+      };
+    case types.SHOW_ADD_BEER_PAGE:
+      return {
+        ...state,
+        addBeerPage: true,
       };
     case types.GET_SORT_TYPE:
       return {

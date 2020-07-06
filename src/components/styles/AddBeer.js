@@ -5,7 +5,7 @@ import Input from "./Input";
 import LogInButton from "./LogInButton";
 import beer from "../../img/beer4.jpg";
 
-const AddBeerWrapper = styled.div`
+const AddBeerWrapper = styled.form`
   background-image: url(${beer});
   background-position: center;
   background-repeat: no-repeat;
@@ -80,6 +80,7 @@ const AddBeerForm = ({ name, type, description }) => (
         </label>
       </CenterWrapper>
       <Submit>Dodaj piwo!</Submit>
+      <Submit>Powrót</Submit>
     </AddBeerWrapper>
   </>
 );

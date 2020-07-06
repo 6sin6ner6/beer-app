@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const LogInWrapper = styled.div`
+const LogInWrapper = styled.form`
   height: 45vh;
   width: 35%;
   position: fixed;

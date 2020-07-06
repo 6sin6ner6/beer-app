@@ -7,6 +7,10 @@ const logInInvisible = () => ({
   type: types.LOGIN_INVISIBLE,
 });
 
+const showAddBeerPage = () => ({
+  type: types.SHOW_ADD_BEER_PAGE,
+});
+
 const addBeers = (item) => ({
   type: types.ADD_BEERS,
   item,
@@ -39,4 +43,5 @@ export default {
   getSortType,
   getSearchValue,
   displaySearched,
+  showAddBeerPage,
 };
