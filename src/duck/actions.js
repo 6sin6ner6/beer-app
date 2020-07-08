@@ -15,6 +15,10 @@ const addBeers = (item) => ({
   type: types.ADD_BEERS,
   item,
 });
+const addAccess = (item) => ({
+  type: types.ADD_ACCESS,
+  item,
+});
 
 const sortBeers = (sortType) => ({
   type: types.SORT_BEERS,
@@ -35,6 +39,17 @@ const displaySearched = (searchValue) => ({
   searchValue,
 });
 
+const getLogin = (name, value) => ({
+  type: types.GET_LOGIN,
+  name,
+  value,
+});
+const getPassword = (name, value) => ({
+  type: types.GET_PASSWORD,
+  name,
+  value,
+});
+
 export default {
   logInPageVisible,
   logInPageInvisible,
@@ -44,4 +59,7 @@ export default {
   getSearchValue,
   displaySearched,
   showAddBeerPage,
+  addAccess,
+  getLogin,
+  getPassword,
 };

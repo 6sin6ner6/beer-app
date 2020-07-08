@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   addBeerPage: false,
   beers: [],
   filteredBeers: [],
+  access: [],
   sortType: "",
   searchValue: "",
 };
@@ -21,12 +22,27 @@ const beersReducer = (state = INITIAL_STATE, action) => {
         ...state,
         logInVisible: false,
       };
-    case types.SHOW_ADD_BEER_PAGE:
+    case types.GET_LOGIN:
       return {
         ...state,
-        addBeerPage: true,
-        logInVisible: false,
+        [action.name]: action.value,
       };
+    case types.GET_PASSWORD:
+      return {
+        ...state,
+        [action.name]: action.value,
+      };
+    case types.SHOW_ADD_BEER_PAGE:
+      if (
+        state.access[0].login === state.login &&
+        state.access[0].password === state.password
+      ) {
+        return {
+          ...state,
+          addBeerPage: true,
+          logInVisible: false,
+        };
+      } else return { ...state };
     case types.GET_SORT_TYPE:
       return {
         ...state,
@@ -42,6 +58,11 @@ const beersReducer = (state = INITIAL_STATE, action) => {
         ...state,
         beers: [...state.beers, action.item],
         filteredBeers: [...state.beers, action.item],
+      };
+    case types.ADD_ACCESS:
+      return {
+        ...state,
+        access: [...state.access, action.item],
       };
     case types.DISPLAY_SEARCHED:
       return {
