@@ -8,6 +8,7 @@ const BeerItemWrapper = styled.div`
 const BeerImage = styled.img`
   height: 430px;
   cursor: pointer;
+  margin-top: 60px;
 `;
 
 const BeerName = styled.h1``;
@@ -15,7 +16,7 @@ const BeerName = styled.h1``;
 const BeerType = styled.p``;
 
 const Rating = styled.img`
-  margin-bottom: 60px;
+  cursor: pointer;
 `;
 
 export { BeerItemWrapper, BeerImage, BeerName, BeerType, Rating };

@@ -11,6 +11,7 @@ const SearchBarWrapper = styled.div`
   height: 160px;
   width: 1080px;
   margin: 50px auto;
+  margin-bottom: -30px;
 `;
 
 const SearchBar = ({ addBeerPage }) => {

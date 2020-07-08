@@ -49,6 +49,13 @@ const getPassword = (name, value) => ({
   name,
   value,
 });
+const showBeerCard = (id) => ({
+  type: types.SHOW_BEER_CARD,
+  id,
+});
+const closeBeerCard = () => ({
+  type: types.CLOSE_BEER_CARD,
+});
 
 export default {
   logInPageVisible,
@@ -62,4 +69,6 @@ export default {
   addAccess,
   getLogin,
   getPassword,
+  showBeerCard,
+  closeBeerCard,
 };

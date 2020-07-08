@@ -3,7 +3,9 @@ import types from "./types";
 const INITIAL_STATE = {
   logInVisible: false,
   addBeerPage: false,
+  beerCard: false,
   beers: [],
+  beerCardContent: [],
   filteredBeers: [],
   access: [],
   sortType: "",
@@ -43,6 +45,20 @@ const beersReducer = (state = INITIAL_STATE, action) => {
           logInVisible: false,
         };
       } else return { ...state };
+
+    case types.SHOW_BEER_CARD:
+      return {
+        ...state,
+        beerCard: true,
+        beerCardContent: state.beers.filter((beer) =>
+          beer._id.includes(action.id)
+        ),
+      };
+    case types.CLOSE_BEER_CARD:
+      return {
+        ...state,
+        beerCard: false,
+      };
     case types.GET_SORT_TYPE:
       return {
         ...state,

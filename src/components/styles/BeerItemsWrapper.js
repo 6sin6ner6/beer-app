@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import actions from "../../duck/actions";
 import { getAllBeers } from "../../duck/operations";
 import {
   BeerItemWrapper,
@@ -21,15 +22,26 @@ const PageWrapper = styled.div`
   align-items: space-around;
 `;
 
-const BeerItemsWrapper = ({ beers, getAllBeers, addBeerPage }) => {
+const BeerItemsWrapper = ({
+  beers,
+  getAllBeers,
+  addBeerPage,
+  showBeerCard,
+}) => {
   useEffect(() => {
     getAllBeers();
   }, []);
+
   return (
     <PageWrapper addBeerPage={addBeerPage}>
       {beers.map((beer) => (
-        <BeerItemWrapper>
-          <BeerImage src={img} />
+        <BeerItemWrapper
+          key={beer._id}
+          onClick={(e) => {
+            showBeerCard(e.target.alt);
+          }}
+        >
+          <BeerImage src={img} alt={beer._id} />
           <BeerName>{beer.beerName}</BeerName>
           <BeerType>{beer.beerType}</BeerType>
           <Rating src={rating} />
@@ -46,6 +58,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getAllBeers: () => dispatch(getAllBeers()),
+  showBeerCard: (id) => dispatch(actions.showBeerCard(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BeerItemsWrapper);

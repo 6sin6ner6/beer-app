@@ -1,16 +1,22 @@
 import styled from "styled-components";
 import React from "react";
+import { connect } from "react-redux";
+import actions from "../../duck/actions";
 import CloseButton from "./CloseButton";
 import img from "../../img/beer2.jpg";
 
 const BeerItemWrapper = styled.div`
   height: 80vh;
   width: 60vw;
-  position: relative;
-  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: ${(props) => (props.beerCard ? "flex" : "none")};
   align-items: center;
   justify-content: space-around;
-  background-color: lightgrey;
+  background-color: rgb(0, 0, 0);
+  color: white;
 `;
 
 const TextWrapper = styled.div`
@@ -50,25 +56,27 @@ const Close = styled(CloseButton)`
   border: 2px solid white;
 `;
 
-const BeerCard = ({ image, name, type, description }) => (
-  <BeerItemWrapper>
-    <BeerImage src={img} />
-    <TextWrapper>
-      <BeerName>Kormoran IPA</BeerName>
-      <BeerType>India Pale Ale</BeerType>
-      <BeerDescription>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa quidem,
-        error aliquam pariatur, doloribus sint impedit voluptatem reiciendis vel
-        quaerat provident itaque. Dolorum aperiam reiciendis quis corrupti?
-        Eveniet, deleniti quam? Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Culpa quidem, error aliquam pariatur, doloribus sint
-        impedit voluptatem reiciendis vel quaerat provident itaque. Dolorum
-        aperiam reiciendis quis corrupti? Eveniet, deleniti quam? Lorem ipsum
-        dolor sit amet consectetur adipisicing elit.
-      </BeerDescription>
-    </TextWrapper>
-    <Close>X</Close>
+const BeerCard = ({ beerCard, closeBeerCard, beerCardContent }) => (
+  <BeerItemWrapper beerCard={beerCard}>
+    {beerCardContent.map((beer) => (
+      <>
+        <BeerImage src={img} />
+        <TextWrapper>
+          <BeerName>{beer.beerName}</BeerName>
+          <BeerType>{beer.beerType}</BeerType>
+          <BeerDescription>{beer.beerDescription}</BeerDescription>
+        </TextWrapper>
+        <Close onClick={closeBeerCard}>X</Close>
+      </>
+    ))}
   </BeerItemWrapper>
 );
 
-export default BeerCard;
+const mapStateToProps = (state) => {
+  return { beerCard: state.beerCard, beerCardContent: state.beerCardContent };
+};
+const mapDispatchToProps = (dispatch) => ({
+  closeBeerCard: () => dispatch(actions.closeBeerCard()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BeerCard);
