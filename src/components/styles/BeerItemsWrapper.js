@@ -3,15 +3,9 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import actions from "../../duck/actions";
 import { getAllBeers } from "../../duck/operations";
-import {
-  BeerItemWrapper,
-  BeerImage,
-  BeerName,
-  BeerType,
-  Rating,
-} from "./BeerItem";
+import { BeerItemWrapper, BeerImage, BeerName, BeerType } from "./BeerItem";
+import Stars from "./RatingStars";
 import img from "../../img/beer2.jpg";
-import rating from "../../img/rating-stars.png";
 
 const PageWrapper = styled.div`
   width: 1600px;
@@ -44,7 +38,7 @@ const BeerItemsWrapper = ({
           <BeerImage src={img} alt={beer._id} />
           <BeerName>{beer.beerName}</BeerName>
           <BeerType>{beer.beerType}</BeerType>
-          <Rating src={rating} />
+          <Stars rating={beer.beerRating} />
         </BeerItemWrapper>
       ))}
     </PageWrapper>
