@@ -10,6 +10,8 @@ const INITIAL_STATE = {
   access: [],
   sortType: "",
   searchValue: "",
+  beerImage: null,
+  beerRating: "",
 };
 
 const beersReducer = (state = INITIAL_STATE, action) => {
@@ -80,6 +82,16 @@ const beersReducer = (state = INITIAL_STATE, action) => {
         ...state,
         access: [...state.access, action.item],
       };
+    case types.ADD_BEER_IMAGE:
+      return {
+        ...state,
+        beerImage: action.image,
+      };
+    case types.ADD_RATING:
+      return {
+        ...state,
+        beerRating: action.rating,
+      };
     case types.DISPLAY_SEARCHED:
       return {
         ...state,
@@ -99,18 +111,25 @@ const beersReducer = (state = INITIAL_STATE, action) => {
         return {
           ...state,
           filteredBeers: [
-            ...state.filteredBeers.sort((a, b) =>
-              a.beerName > b.beerName ? 1 : -1
-            ),
+            ...state.filteredBeers.sort((a, b) => {
+              if (a.beerName.toLowerCase() < b.beerName.toLowerCase())
+                return -1;
+              if (a.beerName.toLowerCase() > b.beerName.toLowerCase()) return 1;
+              else return state;
+            }),
           ],
         };
       } else if (state.sortType === "nameDescending") {
         return {
           ...state,
           filteredBeers: [
-            ...state.filteredBeers.sort((a, b) =>
-              a.beerName < b.beerName ? 1 : -1
-            ),
+            ...state.filteredBeers.sort((a, b) => {
+              if (a.beerName.toLowerCase() > b.beerName.toLowerCase())
+                return -1;
+              else if (a.beerName.toLowerCase() < b.beerName.toLowerCase())
+                return 1;
+              else return state;
+            }),
           ],
         };
       } else if (state.sortType === "ratingDescending") {

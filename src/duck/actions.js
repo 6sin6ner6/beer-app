@@ -56,6 +56,14 @@ const showBeerCard = (id) => ({
 const closeBeerCard = () => ({
   type: types.CLOSE_BEER_CARD,
 });
+const addBeerImage = (image) => ({
+  type: types.ADD_BEER_IMAGE,
+  image,
+});
+const addRating = (rating) => ({
+  type: types.ADD_RATING,
+  rating,
+});
 
 export default {
   logInPageVisible,
@@ -71,4 +79,6 @@ export default {
   getPassword,
   showBeerCard,
   closeBeerCard,
+  addBeerImage,
+  addRating,
 };

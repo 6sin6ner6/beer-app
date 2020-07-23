@@ -1,10 +1,12 @@
 import styled from "styled-components";
+import actions from "../../duck/actions";
 import React from "react";
 import { connect } from "react-redux";
-import rating from "../../img/rating-stars.png";
 import Input from "./Input";
 import LogInButton from "./LogInButton";
+import Rating from "./AddRating";
 import beer from "../../img/beer4.jpg";
+import FormData from "form-data";
 
 const AddBeerWrapper = styled.form`
   background-image: url(${beer});
@@ -13,7 +15,8 @@ const AddBeerWrapper = styled.form`
   background-size: cover;
   height: 100vh;
   width: 100%;
-  display: ${(props) => (props.addBeerPage ? "flex" : "none")};
+  // display: ${(props) => (props.addBeerPage ? "flex" : "none")};
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -40,54 +43,76 @@ const BeerDescription = styled.textarea`
   color: white;
 `;
 
-const BeerRating = styled.img`
-  position: absolute;
-  left: 100px;
-`;
-
-const FileLoad = styled(LogInButton)`
-  font-size: 20px;
+const FileLoad = styled.input`
+  font-size: 30px;
   margin-right: 15px;
-  border: 3px solid #3483eb;
-  background-color: #3483eb;
-  &:hover {
-    background-color: transparent;
-    box-shadow: 0 0 10px 0 #3483eb inset, 0 0 10px 4px #3483eb;
-  }
+  margin-top: 30px;
+  color: white;
+  border-radius: 50px;
 `;
 
 const Submit = styled(LogInButton)`
   margin-left: 900px;
 `;
 
-const AddBeerForm = ({ addBeerPage }) => (
+const onFormSubmit = (e) => {
+  e.preventDefault();
+  const data = new FormData(document.getElementById("beerForm"));
+  data.append("date", new Date());
+  // data.append("beerRating", props.beerRating);
+  fetch("http://192.168.8.163:5050/api/beers", {
+    method: "POST",
+    body: data,
+  });
+};
+
+const AddBeerForm = ({ addBeerPage, addBeerImage, beerRating }) => (
   <>
-    <AddBeerWrapper addBeerPage={addBeerPage}>
+    <AddBeerWrapper
+      onSubmit={onFormSubmit}
+      addBeerPage={addBeerPage}
+      id="beerForm"
+    >
       <div>
-        <Input name="beerName" placeholder="Nazwa piwa..." />
-        <Input name="beerType" placeholder="Gatunek piwa..." />
+        <Input type="text" name="beerName" placeholder="Nazwa piwa..." />
+        <Input type="text" name="beerType" placeholder="Gatunek piwa..." />
+        <Input
+          type="text"
+          name="beerRating"
+          value={beerRating}
+          style={{ display: "none" }}
+        />
       </div>
       <BeerDescription name="beerDescription" placeholder="Opis piwa..." />
       <CenterWrapper>
         <label style={{ fontSize: "35px", color: "white" }} for="rating">
           Ocena:
         </label>
-        <BeerRating id="rating" src={rating} />
+        <Rating />
       </CenterWrapper>
       <CenterWrapper>
-        <FileLoad id="file">Wybierz plik...</FileLoad>
-        <label style={{ fontSize: "35px", color: "white" }} for="file">
-          Nie wybrano pliku
-        </label>
+        <FileLoad
+          type="file"
+          name="beerImage"
+          onChange={(e) => addBeerImage(e.target.files[0])}
+        />
       </CenterWrapper>
-      <Submit>Dodaj piwo!</Submit>
+      <Submit type="submit">Dodaj piwo!</Submit>
       <Submit>Powrót</Submit>
     </AddBeerWrapper>
   </>
 );
 
 const mapStateToProps = (state) => {
-  return { addBeerPage: state.addBeerPage };
+  return {
+    addBeerPage: state.addBeerPage,
+    beerImage: state.beerImage,
+    beerRating: state.beerRating,
+  };
 };
 
-export default connect(mapStateToProps)(AddBeerForm);
+const mapDispatchToProps = (dispatch) => ({
+  addBeerImage: (image) => dispatch(actions.addBeerImage(image)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddBeerForm);
