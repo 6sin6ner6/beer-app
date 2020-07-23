@@ -5,7 +5,6 @@ import actions from "../../duck/actions";
 import { getAllBeers } from "../../duck/operations";
 import { BeerItemWrapper, BeerImage, BeerName, BeerType } from "./BeerItem";
 import Stars from "./RatingStars";
-import img from "../../img/beer2.jpg";
 
 const PageWrapper = styled.div`
   width: 1600px;
@@ -28,19 +27,24 @@ const BeerItemsWrapper = ({
 
   return (
     <PageWrapper addBeerPage={addBeerPage}>
-      {beers.map((beer) => (
-        <BeerItemWrapper
-          key={beer._id}
-          onClick={(e) => {
-            showBeerCard(e.target.alt);
-          }}
-        >
-          <BeerImage src={img} alt={beer._id} />
-          <BeerName>{beer.beerName}</BeerName>
-          <BeerType>{beer.beerType}</BeerType>
-          <Stars rating={beer.beerRating} />
-        </BeerItemWrapper>
-      ))}
+      {beers.map((beer) => {
+        return (
+          <BeerItemWrapper
+            key={beer._id}
+            onClick={(e) => {
+              showBeerCard(e.target.alt);
+            }}
+          >
+            <BeerImage
+              src={`data:image/jpeg;base64,${beer.image.buffer}`}
+              alt={beer._id}
+            />
+            <BeerName>{beer.beerName}</BeerName>
+            <BeerType>{beer.beerType}</BeerType>
+            <Stars rating={beer.beerRating} />
+          </BeerItemWrapper>
+        );
+      })}
     </PageWrapper>
   );
 };

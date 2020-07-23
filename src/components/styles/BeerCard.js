@@ -3,7 +3,6 @@ import React from "react";
 import { connect } from "react-redux";
 import actions from "../../duck/actions";
 import CloseButton from "./CloseButton";
-import img from "../../img/beer2.jpg";
 
 const BeerItemWrapper = styled.div`
   height: 80vh;
@@ -60,7 +59,7 @@ const BeerCard = ({ beerCard, closeBeerCard, beerCardContent }) => (
   <BeerItemWrapper beerCard={beerCard}>
     {beerCardContent.map((beer) => (
       <>
-        <BeerImage src={img} />
+        <BeerImage src={`data:image/jpeg;base64,${beer.image.buffer}`} />
         <TextWrapper>
           <BeerName>{beer.beerName}</BeerName>
           <BeerType>{beer.beerType}</BeerType>
