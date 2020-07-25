@@ -2,13 +2,12 @@ import styled from "styled-components";
 import React, { useRef } from "react";
 import { connect } from "react-redux";
 import actions from "../../duck/actions";
-import img from "../../img/beer3.jpg";
+import beerIcon from "../../img/pub.svg";
 
 const PageWrapper = styled.div`
   text-align: center;
   height: 100vh;
   position: relative;
-  background-image: url(${img});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,11 +19,17 @@ const PageWrapper = styled.div`
 const Title = styled.h1`
   position: absolute;
   color: black;
-  top: 320px;
+  top: 200px;
   left: 50%;
   transform: translate(-50%);
-  font-size: 100px;
+  padding: 60px 100px;
+  font-size: 80px;
   font-weight: 200;
+  background-color: #d42919;
+`;
+const Logo = styled.img`
+  height: 200px;
+  margin: 200px 20px;
 `;
 
 const Button = styled.button`
@@ -36,7 +41,7 @@ const Button = styled.button`
   height: 100px;
   padding: 15px 50px;
   border-radius: 50px;
-  margin: 300px 100px;
+  margin: 250px 100px;
   cursor: pointer;
   transition: 0.2s linear;
   &:hover {
@@ -54,6 +59,7 @@ const MainPageWrapper = ({ logInPageVisible, addBeerPage }) => {
     <PageWrapper ref={myRef} addBeerPage={addBeerPage}>
       <Title>Piwa wypite i ocenione</Title>
       <Button onClick={executeScroll}>Zobacz piwa</Button>
+      <Logo src={beerIcon} />
       <Button onClick={logInPageVisible}>Logowanie</Button>
     </PageWrapper>
   );

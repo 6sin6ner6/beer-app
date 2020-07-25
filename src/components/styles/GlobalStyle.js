@@ -23,6 +23,7 @@ export const GlobalStyle = createGlobalStyle`
 
     html{
       scroll-behavior: smooth;
+      background-image: linear-gradient(to bottom, #f79a07,#f5d095);
     }
 
   

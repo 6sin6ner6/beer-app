@@ -14,7 +14,7 @@ const BeerItemWrapper = styled.div`
   display: ${(props) => (props.beerCard ? "flex" : "none")};
   align-items: center;
   justify-content: space-around;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(30, 30, 30);
   color: white;
 `;
 
