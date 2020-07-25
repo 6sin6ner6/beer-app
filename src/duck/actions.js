@@ -64,6 +64,9 @@ const addRating = (rating) => ({
   type: types.ADD_RATING,
   rating,
 });
+const resetRating = () => ({
+  type: types.RESET_RATING,
+});
 
 export default {
   logInPageVisible,
@@ -81,4 +84,5 @@ export default {
   closeBeerCard,
   addBeerImage,
   addRating,
+  resetRating,
 };

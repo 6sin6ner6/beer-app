@@ -27,17 +27,15 @@ const BeerItemsWrapper = ({
 
   return (
     <PageWrapper addBeerPage={addBeerPage}>
-      {beers.map((beer) => {
+      {beers.reverse().map((beer) => {
         return (
-          <BeerItemWrapper
-            key={beer._id}
-            onClick={(e) => {
-              showBeerCard(e.target.alt);
-            }}
-          >
+          <BeerItemWrapper key={beer._id}>
             <BeerImage
               src={`data:image/jpeg;base64,${beer.image.buffer}`}
               alt={beer._id}
+              onClick={(e) => {
+                showBeerCard(e.target.alt);
+              }}
             />
             <BeerName>{beer.beerName}</BeerName>
             <BeerType>{beer.beerType}</BeerType>

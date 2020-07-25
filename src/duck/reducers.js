@@ -92,6 +92,11 @@ const beersReducer = (state = INITIAL_STATE, action) => {
         ...state,
         beerRating: action.rating,
       };
+    case types.RESET_RATING:
+      return {
+        ...state,
+        beerRating: "",
+      };
     case types.DISPLAY_SEARCHED:
       return {
         ...state,
@@ -112,9 +117,9 @@ const beersReducer = (state = INITIAL_STATE, action) => {
           ...state,
           filteredBeers: [
             ...state.filteredBeers.sort((a, b) => {
-              if (a.beerName.toLowerCase() < b.beerName.toLowerCase())
+              if (a.beerName.toLowerCase() > b.beerName.toLowerCase())
                 return -1;
-              if (a.beerName.toLowerCase() > b.beerName.toLowerCase()) return 1;
+              if (a.beerName.toLowerCase() < b.beerName.toLowerCase()) return 1;
               else return state;
             }),
           ],
@@ -124,9 +129,9 @@ const beersReducer = (state = INITIAL_STATE, action) => {
           ...state,
           filteredBeers: [
             ...state.filteredBeers.sort((a, b) => {
-              if (a.beerName.toLowerCase() > b.beerName.toLowerCase())
+              if (a.beerName.toLowerCase() < b.beerName.toLowerCase())
                 return -1;
-              else if (a.beerName.toLowerCase() < b.beerName.toLowerCase())
+              else if (a.beerName.toLowerCase() > b.beerName.toLowerCase())
                 return 1;
               else return state;
             }),
@@ -137,7 +142,7 @@ const beersReducer = (state = INITIAL_STATE, action) => {
           ...state,
           filteredBeers: [
             ...state.filteredBeers.sort((a, b) =>
-              a.beerRating < b.beerRating ? 1 : -1
+              a.beerRating > b.beerRating ? 1 : -1
             ),
           ],
         };
@@ -146,7 +151,7 @@ const beersReducer = (state = INITIAL_STATE, action) => {
           ...state,
           filteredBeers: [
             ...state.filteredBeers.sort((a, b) =>
-              a.beerRating > b.beerRating ? 1 : -1
+              a.beerRating < b.beerRating ? 1 : -1
             ),
           ],
         };
@@ -154,7 +159,7 @@ const beersReducer = (state = INITIAL_STATE, action) => {
         return {
           ...state,
           filteredBeers: [
-            ...state.filteredBeers.sort((a, b) => (a.date < b.date ? 1 : -1)),
+            ...state.filteredBeers.sort((a, b) => (a.date > b.date ? 1 : -1)),
           ],
         };
       }

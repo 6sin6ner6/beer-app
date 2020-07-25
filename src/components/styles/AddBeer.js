@@ -15,8 +15,7 @@ const AddBeerWrapper = styled.form`
   background-size: cover;
   height: 100vh;
   width: 100%;
-  // display: ${(props) => (props.addBeerPage ? "flex" : "none")};
-  display: flex;
+  display: ${(props) => (props.addBeerPage ? "flex" : "none")};
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -54,19 +53,28 @@ const FileLoad = styled.input`
 const Submit = styled(LogInButton)`
   margin-left: 900px;
 `;
+const reload = () => {
+  window.location.reload();
+};
 
 const onFormSubmit = (e) => {
   e.preventDefault();
-  const data = new FormData(document.getElementById("beerForm"));
+  const form = document.getElementById("beerForm");
+  const data = new FormData(form);
   data.append("date", new Date());
-  // data.append("beerRating", props.beerRating);
   fetch("http://192.168.8.163:5050/api/beers", {
     method: "POST",
     body: data,
   });
+  form.reset();
 };
 
-const AddBeerForm = ({ addBeerPage, addBeerImage, beerRating }) => (
+const AddBeerForm = ({
+  addBeerPage,
+  addBeerImage,
+  beerRating,
+  resetRating,
+}) => (
   <>
     <AddBeerWrapper
       onSubmit={onFormSubmit}
@@ -94,11 +102,14 @@ const AddBeerForm = ({ addBeerPage, addBeerImage, beerRating }) => (
         <FileLoad
           type="file"
           name="beerImage"
+          required
           onChange={(e) => addBeerImage(e.target.files[0])}
         />
       </CenterWrapper>
-      <Submit type="submit">Dodaj piwo!</Submit>
-      <Submit>Powrót</Submit>
+      <Submit onClick={resetRating} type="submit">
+        Dodaj piwo!
+      </Submit>
+      <Submit onClick={reload}>Powrót</Submit>
     </AddBeerWrapper>
   </>
 );
@@ -113,6 +124,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   addBeerImage: (image) => dispatch(actions.addBeerImage(image)),
+  resetRating: () => dispatch(actions.resetRating()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddBeerForm);

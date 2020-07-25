@@ -11,8 +11,12 @@ const BeerImage = styled.img`
   margin-top: 60px;
 `;
 
-const BeerName = styled.h1``;
+const BeerName = styled.h1`
+  cursor: default;
+`;
 
-const BeerType = styled.p``;
+const BeerType = styled.p`
+  cursor: default;
+`;
 
 export { BeerItemWrapper, BeerImage, BeerName, BeerType };

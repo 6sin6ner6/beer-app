@@ -13,6 +13,7 @@ const GET_LOGIN = "GET_LOGIN";
 const GET_PASSWORD = "GET_PASSWORD";
 const ADD_BEER_IMAGE = "ADD_BEER_IMAGE";
 const ADD_RATING = "ADD_RATING";
+const RESET_RATING = "RESET_RATING";
 
 export default {
   LOGIN_VISIBLE,
@@ -30,4 +31,5 @@ export default {
   CLOSE_BEER_CARD,
   ADD_BEER_IMAGE,
   ADD_RATING,
+  RESET_RATING,
 };
