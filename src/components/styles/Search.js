@@ -17,12 +17,18 @@ const SearchInput = styled.input`
   background-position: 300px center;
 `;
 
-const Search = ({ getSearchValue, displaySearched, searchValue }) => {
+const Search = ({
+  getSearchValue,
+  displaySearched,
+  searchValue,
+  sortBeers,
+}) => {
   return (
     <SearchInput
       onChange={(e) => {
         getSearchValue(e.target.value);
         displaySearched();
+        sortBeers();
       }}
       placeholder="Wyszukaj piwo..."
       value={searchValue}
@@ -39,6 +45,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(actions.getSearchValue(searchValue)),
   displaySearched: (searchValue) =>
     dispatch(actions.displaySearched(searchValue)),
+  sortBeers: (sortType) => dispatch(actions.sortBeers(sortType)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

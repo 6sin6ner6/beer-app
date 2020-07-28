@@ -4,6 +4,8 @@ const INITIAL_STATE = {
   logInVisible: false,
   addBeerPage: false,
   beerCard: false,
+  logInFail: false,
+  addBeerSuccess: false,
   beers: [],
   beerCardContent: [],
   filteredBeers: [],
@@ -46,7 +48,12 @@ const beersReducer = (state = INITIAL_STATE, action) => {
           addBeerPage: true,
           logInVisible: false,
         };
-      } else return { ...state };
+      } else
+        return {
+          ...state,
+          logInVisible: true,
+          logInFail: true,
+        };
 
     case types.SHOW_BEER_CARD:
       return {
@@ -96,6 +103,11 @@ const beersReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         beerRating: "",
+      };
+    case types.ADDING_SUCCESS:
+      return {
+        ...state,
+        addBeerSuccess: !state.addBeerSuccess,
       };
     case types.DISPLAY_SEARCHED:
       return {

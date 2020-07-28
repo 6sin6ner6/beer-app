@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import React from "react";
+import { connect } from "react-redux";
 
 const FooterWrapper = styled.div`
-  display: flex;
+  display: ${(props) => (props.addBeerPage ? "none" : "flex")};
   align-items: center;
   justify-content: center;
   margin-top: 20px;
@@ -11,9 +12,9 @@ const FooterWrapper = styled.div`
   color: white;
 `;
 
-const Footer = () => {
+const Footer = ({ addBeerPage }) => {
   return (
-    <FooterWrapper>
+    <FooterWrapper addBeerPage={addBeerPage}>
       <div>
         Page made by Bartzabel | Icons made by{" "}
         <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
@@ -28,4 +29,8 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+const mapStateToProps = (state) => {
+  return { addBeerPage: state.addBeerPage };
+};
+
+export default connect(mapStateToProps)(Footer);

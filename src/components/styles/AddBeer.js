@@ -47,17 +47,31 @@ const FileLoad = styled.input`
   margin-right: 15px;
   margin-top: 30px;
   color: white;
-  border-radius: 50px;
 `;
 
-const Submit = styled(LogInButton)`
+const Button = styled(LogInButton)`
   margin-left: 900px;
 `;
+
+const Success = styled.div`
+  display: ${(props) => (props.addBeerSuccess ? "block" : "none")};
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100px;
+  color: white;
+  font-size: 70px;
+  text-align: center;
+`;
+
 const reload = () => {
   window.location.reload();
 };
 
-const onFormSubmit = (e) => {
+const onFormSubmit = (e, props) => {
   e.preventDefault();
   const form = document.getElementById("beerForm");
   const data = new FormData(form);
@@ -67,22 +81,36 @@ const onFormSubmit = (e) => {
     body: data,
   });
   form.reset();
+  props.resetRating();
+  props.addingSuccess();
+  let i = setInterval(props.addingSuccess, 2000);
+  setTimeout(() => {
+    clearInterval(i);
+  }, 3000);
 };
 
 const AddBeerForm = ({
   addBeerPage,
   addBeerImage,
   beerRating,
+  addingSuccess,
   resetRating,
+  addBeerSuccess,
 }) => (
   <>
     <AddBeerWrapper
-      onSubmit={onFormSubmit}
+      onSubmit={(e) => onFormSubmit(e, { addingSuccess, resetRating })}
       addBeerPage={addBeerPage}
       id="beerForm"
     >
+      <Success addBeerSuccess={addBeerSuccess}>Piwo zostało dodane!</Success>
       <div>
-        <Input type="text" name="beerName" placeholder="Nazwa piwa..." />
+        <Input
+          type="text"
+          name="beerName"
+          placeholder="Nazwa piwa..."
+          required
+        />
         <Input type="text" name="beerType" placeholder="Gatunek piwa..." />
         <Input
           type="text"
@@ -102,14 +130,13 @@ const AddBeerForm = ({
         <FileLoad
           type="file"
           name="beerImage"
+          id="beerImage"
           required
           onChange={(e) => addBeerImage(e.target.files[0])}
         />
       </CenterWrapper>
-      <Submit onClick={resetRating} type="submit">
-        Dodaj piwo!
-      </Submit>
-      <Submit onClick={reload}>Powrót</Submit>
+      <Button type="submit">Dodaj piwo!</Button>
+      <Button onClick={reload}>Powrót</Button>
     </AddBeerWrapper>
   </>
 );
@@ -119,12 +146,14 @@ const mapStateToProps = (state) => {
     addBeerPage: state.addBeerPage,
     beerImage: state.beerImage,
     beerRating: state.beerRating,
+    addBeerSuccess: state.addBeerSuccess,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   addBeerImage: (image) => dispatch(actions.addBeerImage(image)),
   resetRating: () => dispatch(actions.resetRating()),
+  addingSuccess: () => dispatch(actions.addingSuccess()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddBeerForm);

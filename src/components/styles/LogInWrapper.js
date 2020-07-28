@@ -22,12 +22,20 @@ const PageWrapper = styled.form`
   background-color: rgb(30, 30, 30);
 `;
 
+const Warning = styled.div`
+  color: red;
+  font-size: 20px;
+  margin-top: 10px;
+  display: ${(props) => (props.logInFail ? "flex" : "none")};
+`;
+
 const LogInWrapper = ({
   logInInvisible,
   showAddBeerPage,
   getAccess,
   getLogin,
   getPassword,
+  logInFail,
 }) => {
   useEffect(() => {
     getAccess();
@@ -53,7 +61,18 @@ const LogInWrapper = ({
           placeholder="Hasło"
           name="password"
         />
-        <LogInButton onClick={showAddBeerPage}>Zaloguj</LogInButton>
+        <Warning logInFail={logInFail}>
+          Podany login lub hasło jest niepoprawne
+        </Warning>
+        <LogInButton
+          onClick={(e) => {
+            e.preventDefault();
+            showAddBeerPage();
+          }}
+        >
+          Zaloguj
+        </LogInButton>
+
         <CloseButton onClick={logInInvisible}>X</CloseButton>
       </PageWrapper>
     </>
@@ -61,7 +80,11 @@ const LogInWrapper = ({
 };
 
 const mapStateToProps = (state) => {
-  return { logInVisible: state.logInVisible, access: state.access };
+  return {
+    logInVisible: state.logInVisible,
+    access: state.access,
+    logInFail: state.logInFail,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => ({
