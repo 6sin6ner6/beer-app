@@ -1,52 +1,70 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import React, { useRef } from "react";
 import { connect } from "react-redux";
 import actions from "../../duck/actions";
-import beerIcon from "../../img/pub.svg";
+import logo from "../../img/logo.png";
+import img from "../../img/beer1.jpg";
 
 const PageWrapper = styled.div`
   text-align: center;
   height: 100vh;
   position: relative;
+  background-image: url(${img});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: ${(props) => (props.addBeerPage ? "none" : "flex")};
-  align-items: flex-end;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-end;
 `;
 
-const Title = styled.h1`
-  position: absolute;
-  color: black;
-  top: 200px;
-  left: 50%;
-  transform: translate(-50%);
-  padding: 60px 100px;
-  font-size: 80px;
-  font-weight: 200;
-  background-color: #d42919;
+const rotate = keyframes`
+ 0% {
+   transform: rotate(-540deg) scale(0);
+   opacity: 0;
+ }
+ 100% {
+   transform: rotate(0) scale(1);
+   opacity: 1;
+ }
 `;
+const show = keyframes`
+ 0% {
+   transform: translateY(-1000px);
+   opacity: 0;
+ }
+ 100% {
+   transform: translateY(0);
+   opacity: 1;
+ }
+`;
+
 const Logo = styled.img`
-  height: 200px;
-  margin: 200px 20px;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  height: 800px;   
+  animation: ${rotate} 0.8s ease-out both;
+  }
 `;
 
 const Button = styled.button`
   display: inline-block;
-  border: 3px solid #d42919;
+  border: 3px solid white;
   color: black;
-  background-color: #d42919;
-  font-size: 40px;
-  height: 100px;
+  background-color: white;
+  font-size: 35px;
+  height: 80px;
   padding: 15px 50px;
   border-radius: 50px;
-  margin: 250px 100px;
+  margin: 30px 30px;
   cursor: pointer;
   transition: 0.2s linear;
+  animation: ${show} 1s 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   &:hover {
     background-color: transparent;
     box-shadow: 0 0 10px 0 #d42919 inset, 0 0 10px 4px #d42919;
+    color: white;
   }
 `;
 
@@ -57,9 +75,8 @@ const MainPageWrapper = ({ logInPageVisible, addBeerPage }) => {
 
   return (
     <PageWrapper ref={myRef} addBeerPage={addBeerPage}>
-      <Title>Piwa wypite i ocenione</Title>
+      <Logo src={logo} />
       <Button onClick={executeScroll}>Zobacz piwa</Button>
-      <Logo src={beerIcon} />
       <Button onClick={logInPageVisible}>Logowanie</Button>
     </PageWrapper>
   );
