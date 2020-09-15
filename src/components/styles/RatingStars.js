@@ -8,6 +8,9 @@ const Star1 = styled(FaStar)`
   color: ${(props) => {
     if (props.rating >= 1) return "yellow";
   }};
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    font-size: 20px;
+  }
 `;
 const Star2 = styled(FaStar)`
   font-size: 35px;
@@ -15,6 +18,9 @@ const Star2 = styled(FaStar)`
   color: ${(props) => {
     if (props.rating >= 2) return "yellow";
   }};
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    font-size: 20px;
+  }
 `;
 const Star3 = styled(FaStar)`
   font-size: 35px;
@@ -22,6 +28,9 @@ const Star3 = styled(FaStar)`
   color: ${(props) => {
     if (props.rating >= 3) return "yellow";
   }};
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    font-size: 20px;
+  }
 `;
 const Star4 = styled(FaStar)`
   font-size: 35px;
@@ -29,6 +38,9 @@ const Star4 = styled(FaStar)`
   color: ${(props) => {
     if (props.rating >= 4) return "yellow";
   }};
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    font-size: 20px;
+  }
 `;
 const Star5 = styled(FaStar)`
   font-size: 35px;
@@ -36,6 +48,9 @@ const Star5 = styled(FaStar)`
   color: ${(props) => {
     if (props.rating >= 5) return "yellow";
   }};
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    font-size: 20px;
+  }
 `;
 
 const Stars = ({ rating }) => {

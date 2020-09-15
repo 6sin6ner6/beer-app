@@ -10,21 +10,19 @@ const FooterWrapper = styled.div`
   height: 40px;
   background-color: black;
   color: white;
+  width: 100%;
+  @media (max-width: 575.98px) {
+    width: 100%;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    width: 100%;
+  }
 `;
 
 const Footer = ({ addBeerPage }) => {
   return (
     <FooterWrapper addBeerPage={addBeerPage}>
-      <div>
-        Page made by Bartzabel | Icons made by{" "}
-        <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
-          Freepik
-        </a>{" "}
-        from{" "}
-        <a href="https://www.flaticon.com/" title="Flaticon">
-          www.flaticon.com
-        </a>
-      </div>
+      <div>Page made by Bartzabel</div>
     </FooterWrapper>
   );
 };

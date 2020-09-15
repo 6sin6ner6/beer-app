@@ -19,6 +19,13 @@ const AddBeerWrapper = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  @media (max-width: 575.98px) {
+    justify-content: flex-start;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    height: 200vh;
+  }
 `;
 
 const CenterWrapper = styled.div`
@@ -27,6 +34,11 @@ const CenterWrapper = styled.div`
   margin-bottom: -60px;
   height: 80px;
   width: 550px;
+  @media (max-width: 575.98px) {
+    width: 90%;
+    margin-top: 5px;
+    margin-bottom: -70px;
+  }
 `;
 
 const BeerDescription = styled.textarea`
@@ -40,17 +52,65 @@ const BeerDescription = styled.textarea`
   border: 2px solid #d42919;
   background: rgba(0, 0, 0, 0.5);
   color: white;
+  @media (max-width: 575.98px) {
+    width: 90%;
+    height: 55%;
+    font-size: 25px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    width: 85%;
+    height: 45%;
+  }
 `;
 
 const FileLoad = styled.input`
+  position: absolute;
+  left: 0;
   font-size: 30px;
   margin-right: 15px;
   margin-top: 30px;
   color: white;
+  @media (max-width: 575.98px) {
+    margin-right: 0;
+    font-size: 20px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 `;
 
 const Button = styled(LogInButton)`
   margin-left: 900px;
+  @media (max-width: 575.98px) {
+    &:nth-child(1) {
+      width: 53%;
+    }
+    margin: 80px 10px 0 0;
+    height: 40px;
+    width: 40%;
+    font-size: 20px;
+    text-align: center;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    margin: 80px 10px 0 0;
+    height: 60px;
+  }
+`;
+
+const Label = styled.label`
+  font-size: 35px;
+  color: white;
+  position: absolute;
+  left: 0;
+  top: 0;
+  @media (max-width: 575.98px) {
+    font-size: 25px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    left: 25%;
+  }
 `;
 
 const Success = styled.div`
@@ -65,6 +125,16 @@ const Success = styled.div`
   color: white;
   font-size: 70px;
   text-align: center;
+  @media (max-width: 575.98px) {
+    height: 75px;
+    font-size: 35px;
+    line-height: 75px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    font-size: 40px;
+    line-height: 80px;
+    height: 80px;
+  }
 `;
 
 const reload = () => {
@@ -119,11 +189,13 @@ const AddBeerForm = ({
           style={{ display: "none" }}
         />
       </div>
-      <BeerDescription name="beerDescription" placeholder="Opis piwa..." />
+      <BeerDescription
+        name="beerDescription"
+        placeholder="Opis piwa..."
+        maxLength="650"
+      />
       <CenterWrapper>
-        <label style={{ fontSize: "35px", color: "white" }} for="rating">
-          Ocena:
-        </label>
+        <Label for="rating">Ocena:</Label>
         <Rating />
       </CenterWrapper>
       <CenterWrapper>
@@ -135,8 +207,10 @@ const AddBeerForm = ({
           onChange={(e) => addBeerImage(e.target.files[0])}
         />
       </CenterWrapper>
-      <Button type="submit">Dodaj piwo!</Button>
-      <Button onClick={reload}>Powrót</Button>
+      <div>
+        <Button type="submit">Dodaj piwo!</Button>
+        <Button onClick={reload}>Powrót</Button>
+      </div>
     </AddBeerWrapper>
   </>
 );

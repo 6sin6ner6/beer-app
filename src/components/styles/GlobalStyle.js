@@ -19,11 +19,12 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;    
     outline: none;
     font-family: Patrickhand;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
     }
 
     html{
       scroll-behavior: smooth;
-      // background-image: linear-gradient(to bottom, #f79a07,#f5d095);
+      background-color: #ddd;
     }
 
   

@@ -12,6 +12,12 @@ const Input = styled.input`
   border-radius: 20px;
   padding: 0 10px;
   color: white;
+  @media (max-width: 575.98px) {
+    width: 40%;
+    height: 70%;
+    margin: 15px 15px 0 15px;
+    font-size: 25px;
+  }
 `;
 
 export default Input;

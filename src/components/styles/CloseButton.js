@@ -13,10 +13,21 @@ const CloseButton = styled.button`
   margin-top: 50px;
   cursor: pointer;
   transition: 0.3s;
+  outline: none;
   &:hover {
     background: transparent;
     border: 2px solid white;
     color: white;
+  }
+  @media (max-width: 575.98px) {
+    top: -10%;
+    right: 5%;
+    width: 40px;
+    height: 40px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    top: 51%;
+    right: 20%;
   }
 `;
 

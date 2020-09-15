@@ -15,6 +15,17 @@ const LogInButton = styled.button`
     background-color: transparent;
     box-shadow: 0 0 10px 0 #d42919 inset, 0 0 10px 4px #d42919;
   }
+  @media (max-width: 575.98px) {
+    font-size: 25px;
+    height: 40px;
+    padding: 0px 40px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    font-size: 25px;
+    height: 50px;
+    margin-left: -60px;
+  }
 `;
 
 export default LogInButton;

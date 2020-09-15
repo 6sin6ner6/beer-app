@@ -13,6 +13,12 @@ const PageWrapper = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: space-around;
+  @media (max-width: 575.98px) {
+    width: 100%;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    width: 100%;
+  }
 `;
 
 const BeerItemsWrapper = ({

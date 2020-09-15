@@ -10,7 +10,7 @@ const INITIAL_STATE = {
   beerCardContent: [],
   filteredBeers: [],
   access: [],
-  sortType: "",
+  sortType: "newest",
   searchValue: "",
   beerImage: null,
   beerRating: "",

@@ -12,6 +12,15 @@ const SearchBarWrapper = styled.div`
   width: 1080px;
   margin: 50px auto;
   margin-bottom: -30px;
+  @media (max-width: 575.98px) {
+    width: 100%;
+    flex-direction: column;
+    height: 140px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    width: 90%;
+    height: 120px;
+  }
 `;
 
 const SearchBar = ({ addBeerPage }) => {

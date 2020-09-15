@@ -5,14 +5,23 @@ import actions from "../../duck/actions";
 import { FaStar } from "react-icons/fa";
 
 const StarsContainer = styled.div`
+  position: absolute;
+  top: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row-reverse;
   margin-top: -45px;
-  margin-left: 90px;
+  margin-left: 100px;
   width: 32%;
   cursor: pointer;
+  @media (max-width: 575.98px) {
+    top: 60%;
+    left: -10%;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    left: 25%;
+  }
 `;
 
 const Star1 = styled(FaStar)`

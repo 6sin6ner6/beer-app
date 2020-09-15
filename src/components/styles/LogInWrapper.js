@@ -20,6 +20,26 @@ const PageWrapper = styled.form`
   align-items: center;
   justify-content: center;
   background-color: rgb(30, 30, 30);
+  @media (max-width: 575.98px) {
+    min-height: 250px;
+    min-width: 85%;
+    justify-content: flex-end;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    width: 60%;
+    height: 250px;
+  }
+`;
+
+const LoginInput = styled(Input)`
+  @media (max-width: 575.98px) {
+    height: 15%;
+    width: 80%;
+    margin: 30px 0 -10px 0;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    height: 20%;
+  }
 `;
 
 const Warning = styled.div`
@@ -27,15 +47,18 @@ const Warning = styled.div`
   font-size: 20px;
   margin-top: 10px;
   display: ${(props) => (props.logInFail ? "flex" : "none")};
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    margin-bottom: -10px;
+  }
 `;
 
 const LogInWrapper = ({
-  logInInvisible,
   showAddBeerPage,
   getAccess,
   getLogin,
   getPassword,
   logInFail,
+  logInInvisible,
 }) => {
   useEffect(() => {
     getAccess();
@@ -43,7 +66,7 @@ const LogInWrapper = ({
   return (
     <>
       <PageWrapper>
-        <Input
+        <LoginInput
           onChange={(e) => {
             const { name, value } = e.target;
             getLogin(name, value);
@@ -52,7 +75,7 @@ const LogInWrapper = ({
           placeholder="Nazwa użytkownika"
           name="login"
         />
-        <Input
+        <LoginInput
           onChange={(e) => {
             const { name, value } = e.target;
             getPassword(name, value);
@@ -73,7 +96,14 @@ const LogInWrapper = ({
           Zaloguj
         </LogInButton>
 
-        <CloseButton onClick={logInInvisible}>X</CloseButton>
+        <CloseButton
+          onClick={() => (e, { logInInvisible }) => {
+            e.preventDefault();
+            logInInvisible();
+          }}
+        >
+          X
+        </CloseButton>
       </PageWrapper>
     </>
   );

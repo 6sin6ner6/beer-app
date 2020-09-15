@@ -16,6 +16,13 @@ const BeerItemWrapper = styled.div`
   justify-content: space-around;
   background-color: rgb(30, 30, 30);
   color: white;
+  @media (max-width: 575.98px) {
+    min-width: 85%;
+    height: 500px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    height: 90vh;
+  }
 `;
 
 const TextWrapper = styled.div`
@@ -27,25 +34,60 @@ const TextWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  @media (max-width: 575.98px) {
+    min-width: 85%;
+    min-height: 85%;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    width: 80%;
+    height: 90%;
+  }
 `;
 
 const BeerImage = styled.img`
   height: 80%;
+  @media (max-width: 575.98px) {
+    display: none;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    display: none;
+  }
 `;
 
 const BeerName = styled.h1`
   font-size: 45px;
+  @media (max-width: 575.98px) {
+    font-size: 30px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    font-size: 22px;
+    margin-top: 10px;
+  }
 `;
 
 const BeerType = styled.p`
   font-size: 30px;
   margin-top: 10px;
+  @media (max-width: 575.98px) {
+    font-size: 20px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    font-size: 13px;
+    margin-top: 5px;
+  }
 `;
 
 const BeerDescription = styled.p`
   margin-top: 25px;
   font-size: 22px;
   text-align: justify;
+  @media (max-width: 575.98px) {
+    font-size: 13px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    font-size: 11px;
+    margin-top: 20px;
+  }
 `;
 
 const Close = styled(CloseButton)`
@@ -53,6 +95,20 @@ const Close = styled(CloseButton)`
   top: 83%;
   right: 2%;
   border: 2px solid white;
+  outline: none;
+  @media (max-width: 575.98px) {
+    top: 77%;
+    right: 5%;
+    height: 45px;
+    width: 45px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    height: 40px;
+    width: 40px;
+    top: -10%;
+    right: 5%;
+    font-size: 25px;
+  }
 `;
 
 const BeerCard = ({ beerCard, closeBeerCard, beerCardContent }) => (
@@ -64,8 +120,8 @@ const BeerCard = ({ beerCard, closeBeerCard, beerCardContent }) => (
           <BeerName>{beer.beerName}</BeerName>
           <BeerType>{beer.beerType}</BeerType>
           <BeerDescription>{beer.beerDescription}</BeerDescription>
+          <Close onClick={closeBeerCard}>X</Close>
         </TextWrapper>
-        <Close onClick={closeBeerCard}>X</Close>
       </>
     ))}
   </BeerItemWrapper>

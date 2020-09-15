@@ -9,10 +9,16 @@ const BeerImage = styled.img`
   height: 430px;
   cursor: pointer;
   margin-top: 60px;
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    height: 250px;
+  }
 `;
 
 const BeerName = styled.h1`
   cursor: default;
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    font-size: 20px;
+  }
 `;
 
 const BeerType = styled.p`

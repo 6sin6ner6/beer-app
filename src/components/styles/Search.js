@@ -15,6 +15,16 @@ const SearchInput = styled.input`
   background-repeat: no-repeat;
   background-size: 35px;
   background-position: 300px center;
+  @media (max-width: 575.98px) {
+    width: 80%;
+    height: 50px;
+    background-position: 235px center;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    width: 60%;
+    background-position: 220px center;
+    margin-right: 20px;
+  }
 `;
 
 const Search = ({

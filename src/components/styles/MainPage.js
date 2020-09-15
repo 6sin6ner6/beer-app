@@ -8,6 +8,7 @@ import img from "../../img/beer1.jpg";
 const PageWrapper = styled.div`
   text-align: center;
   height: 100vh;
+  width: 100%;
   position: relative;
   background-image: url(${img});
   background-position: center;
@@ -16,6 +17,19 @@ const PageWrapper = styled.div`
   display: ${(props) => (props.addBeerPage ? "none" : "flex")};
   align-items: flex-start;
   justify-content: flex-end;
+  @media (max-width: 575.98px) {
+    min-height: 600px;
+    background-position: 65% 80%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 60px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
 `;
 
 const rotate = keyframes`
@@ -43,8 +57,16 @@ const Logo = styled.img`
   position: absolute;
   top: 80px;
   left: 0;
-  height: 800px;   
+  height: 800px;
   animation: ${rotate} 0.8s ease-out both;
+  @media (max-width: 575.98px) and (orientation: portrait) {
+    height: 300px;
+    top: -5%;
+    left: 8%;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    height: 300px;
+    top: 0;
   }
 `;
 
@@ -63,8 +85,31 @@ const Button = styled.button`
   animation: ${show} 1s 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   &:hover {
     background-color: transparent;
-    box-shadow: 0 0 10px 0 #d42919 inset, 0 0 10px 4px #d42919;
+    box-shadow: 0 0 10px 0 white inset, 0 0 10px 4px white;
     color: white;
+  }
+  @media (hover: none) {
+    &:hover {
+      background-color: white;
+      color: black;
+      box-shadow: none;
+    }
+  }
+  @media (max-width: 575.98px) {
+    font-size: 25px;
+    height: 60px;
+    margin-top: 40px;
+    margin-bottom: -20px;
+    padding: 0px 40px;
+    line-height: 25px;
+  }
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    font-size: 25px;
+    height: 50px;
+    margin-top: 40px;
+    margin-bottom: -20px;
+    padding: 0px 40px;
+    line-height: 25px;
   }
 `;
 
