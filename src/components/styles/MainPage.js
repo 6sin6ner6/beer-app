@@ -113,7 +113,7 @@ const Button = styled.button`
   }
 `;
 
-const MainPageWrapper = ({ logInPageVisible, addBeerPage }) => {
+const MainPageWrapper = ({ logInVisible, addBeerPage }) => {
   const myRef = useRef(null);
   const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetHeight);
   const executeScroll = () => scrollToRef(myRef);
@@ -122,7 +122,7 @@ const MainPageWrapper = ({ logInPageVisible, addBeerPage }) => {
     <PageWrapper ref={myRef} addBeerPage={addBeerPage}>
       <Logo src={logo} />
       <Button onClick={executeScroll}>Zobacz piwa</Button>
-      <Button onClick={logInPageVisible}>Logowanie</Button>
+      <Button onClick={logInVisible}>Logowanie</Button>
     </PageWrapper>
   );
 };
@@ -132,7 +132,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  logInPageVisible: () => dispatch(actions.logInPageVisible()),
+  logInVisible: () => dispatch(actions.logInVisible()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPageWrapper);

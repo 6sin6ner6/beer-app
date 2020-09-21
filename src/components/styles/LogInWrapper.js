@@ -14,7 +14,7 @@ const PageWrapper = styled.form`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
+  display: ${(props) => (props.logInVisible ? "flex" : "none")};
   flex-wrap: no-wrap;
   flex-direction: column;
   align-items: center;
@@ -58,6 +58,7 @@ const LogInWrapper = ({
   getLogin,
   getPassword,
   logInFail,
+  logInVisible,
   logInInvisible,
 }) => {
   useEffect(() => {
@@ -65,7 +66,7 @@ const LogInWrapper = ({
   }, []);
   return (
     <>
-      <PageWrapper>
+      <PageWrapper logInVisible={logInVisible}>
         <LoginInput
           onChange={(e) => {
             const { name, value } = e.target;
@@ -97,7 +98,8 @@ const LogInWrapper = ({
         </LogInButton>
 
         <CloseButton
-          onClick={() => (e, { logInInvisible }) => {
+          type="button"
+          onClick={(e) => {
             e.preventDefault();
             logInInvisible();
           }}

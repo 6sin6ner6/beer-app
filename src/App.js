@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import SearchBar from "./pages/SearchBar";
 import BeerList from "./pages/BeerList";
 import BeerCard from "./components/styles/BeerCard";
@@ -14,7 +13,7 @@ const App = (props) => {
     <>
       <AddBeerPage />
       <MainPage />
-      {props.logInVisible ? <LogInPage /> : null}
+      <LogInPage />
       <SearchBar />
       <BeerList />
       <BeerCard />
@@ -24,8 +23,4 @@ const App = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return { logInVisible: state.logInVisible };
-};
-
-export default connect(mapStateToProps)(App);
+export default App;
