@@ -52,6 +52,9 @@ const BeerImage = styled.img`
   @media (max-width: 767.98px) and (orientation: landscape) {
     display: none;
   }
+  @media (max-width: 1440px) {
+    height: 75%;
+  }
 `;
 
 const BeerName = styled.h1`
@@ -62,6 +65,9 @@ const BeerName = styled.h1`
   @media (max-width: 767.98px) and (orientation: landscape) {
     font-size: 22px;
     margin-top: 10px;
+  }
+  @media (max-width: 1440px) {
+    font-size: 30px;
   }
 `;
 
@@ -75,6 +81,9 @@ const BeerType = styled.p`
     font-size: 13px;
     margin-top: 5px;
   }
+  @media (max-width: 1440px) {
+    font-size: 20px;
+  }
 `;
 
 const BeerDescription = styled.p`
@@ -87,6 +96,9 @@ const BeerDescription = styled.p`
   @media (max-width: 767.98px) and (orientation: landscape) {
     font-size: 11px;
     margin-top: 20px;
+  }
+  @media (max-width: 1440px) {
+    font-size: 16px;
   }
 `;
 

@@ -68,6 +68,9 @@ const Logo = styled.img`
     height: 300px;
     top: 0;
   }
+  @media (max-width: 1440px) {
+    height: 700px;
+  }
 `;
 
 const Button = styled.button`

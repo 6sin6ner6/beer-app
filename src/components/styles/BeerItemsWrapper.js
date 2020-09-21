@@ -7,18 +7,13 @@ import { BeerItemWrapper, BeerImage, BeerName, BeerType } from "./BeerItem";
 import Stars from "./RatingStars";
 
 const PageWrapper = styled.div`
-  width: 1600px;
+  // width: 1600px;
+  width: 100%;
   margin: 10px auto;
   display: ${(props) => (props.addBeerPage ? "none" : "flex")};
   flex-wrap: wrap;
   justify-content: center;
   align-items: space-around;
-  @media (max-width: 575.98px) {
-    width: 100%;
-  }
-  @media (max-width: 767.98px) and (orientation: landscape) {
-    width: 100%;
-  }
 `;
 
 const BeerItemsWrapper = ({
