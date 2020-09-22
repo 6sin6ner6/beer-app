@@ -15,7 +15,7 @@ const fetchBeers = async () => {
 const fetchAccess = async () => {
   // const response = await fetch("http://192.168.8.163:5050/api/access", {
   const response = await fetch(
-    "https://beer-app-server2.herokuapp.com/api/beers",
+    "https://beer-app-server2.herokuapp.com/api/access",
     {
       method: "GET",
     }
