@@ -62,14 +62,14 @@ const Logo = styled.img`
   @media (max-width: 575.98px) and (orientation: portrait) {
     height: 300px;
     top: -5%;
-    left: 8%;
+    left: 10%;
   }
   @media (max-width: 767.98px) and (orientation: landscape) {
     height: 300px;
     top: 0;
   }
-  @media (max-width: 1440px) {
-    height: 700px;
+  @media (min-width: 1240px) {
+    height: 750px;
   }
 `;
 

@@ -25,11 +25,14 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.1.1"
   },
+  "homepage": "https://6sin6ner6.github.io/beer-app",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
