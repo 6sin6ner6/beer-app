@@ -5,9 +5,9 @@ import actions from "../../duck/actions";
 import { getAllBeers } from "../../duck/operations";
 import { BeerItemWrapper, BeerImage, BeerName, BeerType } from "./BeerItem";
 import Stars from "./RatingStars";
+import Spinner from "./Spinner";
 
 const PageWrapper = styled.div`
-  // width: 1600px;
   width: 100%;
   margin: 10px auto;
   display: ${(props) => (props.addBeerPage ? "none" : "flex")};
@@ -24,10 +24,11 @@ const BeerItemsWrapper = ({
 }) => {
   useEffect(() => {
     getAllBeers();
-  }, []);
+  }, [getAllBeers]);
 
   return (
     <PageWrapper addBeerPage={addBeerPage}>
+      {/* <Spinner /> */}
       {beers.reverse().map((beer) => {
         return (
           <BeerItemWrapper key={beer._id}>

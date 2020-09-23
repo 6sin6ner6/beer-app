@@ -97,7 +97,7 @@ const BeerDescription = styled.p`
     font-size: 11px;
     margin-top: 20px;
   }
-  @media (max-width: 1440px) {
+  @media (max-width: 1440px) and (orientation: landscape) {
     font-size: 16px;
   }
 `;

@@ -70,6 +70,12 @@ const resetRating = () => ({
 const addingSuccess = () => ({
   type: types.ADDING_SUCCESS,
 });
+const loadingIsTrue = () => ({
+  type: types.LOADING_IS_TRUE,
+});
+const loadingIsFalse = () => ({
+  type: types.LOADING_IS_FALSE,
+});
 
 export default {
   logInVisible,
@@ -89,4 +95,6 @@ export default {
   addRating,
   resetRating,
   addingSuccess,
+  loadingIsTrue,
+  loadingIsFalse,
 };

@@ -18,8 +18,9 @@ const SortBar = styled.select`
   background-position: 280px center;
   @media (max-width: 575.98px) {
     width: 80%;
-    height: 50px;
+    height: 40px;
     background-position: 235px center;
+    font-size: 30px;
   }
   @media (max-width: 767.98px) and (orientation: landscape) {
     width: 60%;

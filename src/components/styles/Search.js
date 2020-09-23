@@ -17,8 +17,9 @@ const SearchInput = styled.input`
   background-position: 300px center;
   @media (max-width: 575.98px) {
     width: 80%;
-    height: 50px;
+    height: 40px;
     background-position: 235px center;
+    font-size: 30px;
   }
   @media (max-width: 767.98px) and (orientation: landscape) {
     width: 60%;
@@ -47,7 +48,6 @@ const Search = ({
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return { searchValue: state.searchValue };
 };
 const mapDispatchToProps = (dispatch) => ({

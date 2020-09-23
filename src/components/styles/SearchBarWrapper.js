@@ -15,7 +15,7 @@ const SearchBarWrapper = styled.div`
   @media (max-width: 575.98px) {
     width: 100%;
     flex-direction: column;
-    height: 140px;
+    height: 120px;
   }
   @media (max-width: 767.98px) and (orientation: landscape) {
     width: 90%;

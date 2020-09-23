@@ -28,7 +28,7 @@ const Star1 = styled(FaStar)`
   font-size: 35px;
   margin-top: 5px;
   color: ${(props) => {
-    if (props.beerRating >= 1) return "yellow";
+    if (props.beerrating >= 1) return "yellow";
   }};
   &:hover,
   &:hover ~ svg {
@@ -39,7 +39,7 @@ const Star2 = styled(FaStar)`
   font-size: 35px;
   margin-top: 5px;
   color: ${(props) => {
-    if (props.beerRating >= 2) return "yellow";
+    if (props.beerrating >= 2) return "yellow";
   }};
   &:hover,
   &:hover ~ svg {
@@ -50,7 +50,7 @@ const Star3 = styled(FaStar)`
   font-size: 35px;
   margin-top: 5px;
   color: ${(props) => {
-    if (props.beerRating >= 3) return "yellow";
+    if (props.beerrating >= 3) return "yellow";
   }};
   &:hover,
   &:hover ~ svg {
@@ -61,7 +61,7 @@ const Star4 = styled(FaStar)`
   font-size: 35px;
   margin-top: 5px;
   color: ${(props) => {
-    if (props.beerRating >= 4) return "yellow";
+    if (props.beerrating >= 4) return "yellow";
   }};
   &:hover,
   &:hover ~ svg {
@@ -72,7 +72,7 @@ const Star5 = styled(FaStar)`
   font-size: 35px;
   margin-top: 5px;
   color: ${(props) => {
-    if (props.beerRating >= 5) return "yellow";
+    if (props.beerrating >= 5) return "yellow";
   }};
   &:hover,
   &:hover ~ svg {
@@ -80,14 +80,14 @@ const Star5 = styled(FaStar)`
   }
 `;
 
-const Stars = ({ addRating, beerRating }) => {
+const Stars = ({ addRating, beerrating }) => {
   return (
     <StarsContainer onClick={(e) => addRating(e.target.parentElement.id)}>
-      <Star5 id="5" beerRating={beerRating} />
-      <Star4 id="4" beerRating={beerRating} />
-      <Star3 id="3" beerRating={beerRating} />
-      <Star2 id="2" beerRating={beerRating} />
-      <Star1 id="1" beerRating={beerRating} />
+      <Star5 id="5" beerrating={beerrating} />
+      <Star4 id="4" beerrating={beerrating} />
+      <Star3 id="3" beerrating={beerrating} />
+      <Star2 id="2" beerrating={beerrating} />
+      <Star1 id="1" beerrating={beerrating} />
     </StarsContainer>
   );
 };
@@ -98,7 +98,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => {
   return {
-    beerRating: state.beerRating,
+    beerrating: state.beerRating,
   };
 };
 

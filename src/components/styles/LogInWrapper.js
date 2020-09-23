@@ -63,7 +63,7 @@ const LogInWrapper = ({
 }) => {
   useEffect(() => {
     getAccess();
-  }, []);
+  }, [getAccess]);
   return (
     <>
       <PageWrapper logInVisible={logInVisible}>

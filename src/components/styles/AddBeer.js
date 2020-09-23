@@ -146,7 +146,7 @@ const onFormSubmit = (e, props) => {
   const form = document.getElementById("beerForm");
   const data = new FormData(form);
   data.append("date", new Date());
-  fetch("http://192.168.8.163:5050/api/beers", {
+  fetch("https://beer-app-server2.herokuapp.com/api/beers", {
     method: "POST",
     body: data,
   });
@@ -183,6 +183,7 @@ const AddBeerForm = ({
         />
         <Input type="text" name="beerType" placeholder="Gatunek piwa..." />
         <Input
+          readOnly
           type="text"
           name="beerRating"
           value={beerRating}
@@ -195,7 +196,7 @@ const AddBeerForm = ({
         maxLength="650"
       />
       <CenterWrapper>
-        <Label for="rating">Ocena:</Label>
+        <Label HTMLfor="rating">Ocena:</Label>
         <Rating />
       </CenterWrapper>
       <CenterWrapper>

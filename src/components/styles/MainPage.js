@@ -68,7 +68,7 @@ const Logo = styled.img`
     height: 300px;
     top: 0;
   }
-  @media (min-width: 1240px) {
+  @media (max-width: 1440px) and (orientation: landscape) {
     height: 750px;
   }
 `;

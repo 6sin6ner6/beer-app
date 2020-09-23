@@ -14,6 +14,7 @@ const INITIAL_STATE = {
   searchValue: "",
   beerImage: null,
   beerRating: "",
+  loading: true,
 };
 
 const beersReducer = (state = INITIAL_STATE, action) => {
@@ -103,6 +104,16 @@ const beersReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         beerRating: "",
+      };
+    case types.LOADING_IS_TRUE:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.LOADING_IS_FALSE:
+      return {
+        ...state,
+        loading: false,
       };
     case types.ADDING_SUCCESS:
       return {
