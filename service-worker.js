@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/beer-app/precache-manifest.7368ae4ceb9ca6fcc34ab63eecc9aac5.js"
+  "/beer-app/precache-manifest.bf409c454e787b25266ef038cbd4e8b3.js"
 );
 
 self.addEventListener('message', (event) => {
