@@ -7,8 +7,8 @@ const fetchBeers = async () => {
       method: "GET",
     }
   );
-  const json = await response.json();
 
+  const json = await response.json();
   return json;
 };
 const fetchAccess = async () => {
@@ -25,9 +25,18 @@ const fetchAccess = async () => {
 
 export const getAllBeers = () => async (dispatch) => {
   const beers = await fetchBeers();
+  if (beers) {
+    dispatch(actions.loadingIsFalse());
+  }
   beers.map((beer) => dispatch(actions.addBeers(beer)));
 };
 export const getAccess = () => async (dispatch) => {
   const access = await fetchAccess();
   access.map((item) => dispatch(actions.addAccess(item)));
 };
+
+// const mapDispatchToProps = (dispatch) => ({
+//   loadingIsFalse: () => dispatch(actions.loadingIsFalse()),
+// });
+
+// export default connect(mapStateToProps, mapDispatchToProps)(fetchBeers);

@@ -28,7 +28,7 @@ const BeerItemsWrapper = ({
 
   return (
     <PageWrapper addBeerPage={addBeerPage}>
-      {/* <Spinner /> */}
+      <Spinner />
       {beers.reverse().map((beer) => {
         return (
           <BeerItemWrapper key={beer._id}>
