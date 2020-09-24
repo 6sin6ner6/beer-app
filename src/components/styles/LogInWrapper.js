@@ -25,7 +25,7 @@ const PageWrapper = styled.form`
     min-width: 85%;
     justify-content: flex-end;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     width: 60%;
     height: 250px;
   }
@@ -37,7 +37,7 @@ const LoginInput = styled(Input)`
     width: 80%;
     margin: 30px 0 -10px 0;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     height: 20%;
   }
 `;
@@ -47,7 +47,7 @@ const Warning = styled.div`
   font-size: 20px;
   margin-top: 10px;
   display: ${(props) => (props.logInFail ? "flex" : "none")};
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     margin-bottom: -10px;
   }
 `;

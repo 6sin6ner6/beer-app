@@ -9,14 +9,14 @@ const BeerImage = styled.img`
   height: 430px;
   cursor: pointer;
   margin-top: 60px;
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     height: 250px;
   }
 `;
 
 const BeerName = styled.h1`
   cursor: default;
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     font-size: 20px;
   }
 `;

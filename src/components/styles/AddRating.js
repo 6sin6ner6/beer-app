@@ -19,7 +19,7 @@ const StarsContainer = styled.div`
     top: 60%;
     left: -10%;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     left: 25%;
   }
 `;

@@ -4,7 +4,7 @@ import React from "react";
 import Search from "../../components/styles/Search";
 import Sort from "../../components/styles/Sort";
 
-const SearchBarWrapper = styled.div`
+const SearchBarWrapper = styled.form`
   display: ${(props) => (props.addBeerPage ? "none" : "flex")};
   justify-content: space-around;
   align-items: center;
@@ -17,7 +17,7 @@ const SearchBarWrapper = styled.div`
     flex-direction: column;
     height: 120px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     width: 90%;
     height: 120px;
   }
@@ -25,7 +25,13 @@ const SearchBarWrapper = styled.div`
 
 const SearchBar = ({ addBeerPage }) => {
   return (
-    <SearchBarWrapper addBeerPage={addBeerPage}>
+    <SearchBarWrapper
+      onSubmit={(e) => {
+        e.preventDefault();
+        document.activeElement.blur();
+      }}
+      addBeerPage={addBeerPage}
+    >
       <Search />
       <Sort />
     </SearchBarWrapper>

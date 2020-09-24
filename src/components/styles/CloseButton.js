@@ -25,7 +25,7 @@ const CloseButton = styled.button`
     width: 40px;
     height: 40px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     top: 51%;
     right: 20%;
   }

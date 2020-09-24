@@ -23,7 +23,7 @@ const AddBeerWrapper = styled.form`
   @media (max-width: 575.98px) {
     justify-content: flex-start;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     height: 200vh;
   }
 `;
@@ -57,7 +57,7 @@ const BeerDescription = styled.textarea`
     height: 55%;
     font-size: 25px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     width: 85%;
     height: 45%;
   }
@@ -74,7 +74,7 @@ const FileLoad = styled.input`
     margin-right: 0;
     font-size: 20px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -93,7 +93,7 @@ const Button = styled(LogInButton)`
     font-size: 20px;
     text-align: center;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     margin: 80px 10px 0 0;
     height: 60px;
   }
@@ -108,7 +108,7 @@ const Label = styled.label`
   @media (max-width: 575.98px) {
     font-size: 25px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     left: 25%;
   }
 `;
@@ -130,7 +130,7 @@ const Success = styled.div`
     font-size: 35px;
     line-height: 75px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     font-size: 40px;
     line-height: 80px;
     height: 80px;

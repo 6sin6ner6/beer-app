@@ -14,7 +14,7 @@ const FooterWrapper = styled.div`
   @media (max-width: 575.98px) {
     width: 100%;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     width: 100%;
   }
 `;

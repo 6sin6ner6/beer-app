@@ -20,7 +20,7 @@ const BeerItemWrapper = styled.div`
     min-width: 85%;
     height: 500px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     height: 90vh;
   }
 `;
@@ -38,7 +38,7 @@ const TextWrapper = styled.div`
     min-width: 85%;
     min-height: 85%;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     width: 80%;
     height: 90%;
   }
@@ -49,7 +49,7 @@ const BeerImage = styled.img`
   @media (max-width: 575.98px) {
     display: none;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     display: none;
   }
   @media (max-width: 1440px) {
@@ -62,7 +62,7 @@ const BeerName = styled.h1`
   @media (max-width: 575.98px) {
     font-size: 30px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     font-size: 22px;
     margin-top: 10px;
   }
@@ -77,7 +77,7 @@ const BeerType = styled.p`
   @media (max-width: 575.98px) {
     font-size: 20px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     font-size: 13px;
     margin-top: 5px;
   }
@@ -93,11 +93,11 @@ const BeerDescription = styled.p`
   @media (max-width: 575.98px) {
     font-size: 13px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     font-size: 11px;
     margin-top: 20px;
   }
-  @media (max-width: 1440px) and (orientation: landscape) {
+  @media (max-width: 1440px) and (min-device-aspect-ratio: 1/1) {
     font-size: 16px;
   }
 `;
@@ -114,7 +114,7 @@ const Close = styled(CloseButton)`
     height: 45px;
     width: 45px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     height: 40px;
     width: 40px;
     top: -10%;

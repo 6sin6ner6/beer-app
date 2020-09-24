@@ -21,7 +21,7 @@ const LogInButton = styled.button`
     padding: 0px 40px;
     margin-bottom: 20px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     font-size: 25px;
     height: 50px;
     margin-left: -60px;

@@ -25,7 +25,8 @@ const PageWrapper = styled.div`
     justify-content: center;
     padding-top: 60px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-start;
@@ -59,16 +60,16 @@ const Logo = styled.img`
   left: 0;
   height: 800px;
   animation: ${rotate} 0.8s ease-out both;
-  @media (max-width: 575.98px) and (orientation: portrait) {
+  @media (max-width: 575.98px) and (max-device-aspect-ratio: 1/1) {
     height: 300px;
     top: -5%;
     left: 10%;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     height: 300px;
     top: 0;
   }
-  @media (max-width: 1440px) and (orientation: landscape) {
+  @media (min-width: 1440px) and (min-device-aspect-ratio: 1/1) {
     height: 750px;
   }
 `;
@@ -106,7 +107,7 @@ const Button = styled.button`
     padding: 0px 40px;
     line-height: 25px;
   }
-  @media (max-width: 767.98px) and (orientation: landscape) {
+  @media (max-width: 767.98px) and (min-device-aspect-ratio: 1/1) {
     font-size: 25px;
     height: 50px;
     margin-top: 40px;
